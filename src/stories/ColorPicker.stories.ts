@@ -115,9 +115,9 @@ export default {
     },
     lang: {
       type: "string",
-      description: "ZH-cn | En",
+      description: "ZH-cn | En | Fr",
       control: { type: "select" },
-      options: ["ZH-cn", "En"],
+      options: ["ZH-cn", "En", "Fr"],
       table: {
         defaultValue: {
           summary: "ZH-cn",

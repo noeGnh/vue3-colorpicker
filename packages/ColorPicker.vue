@@ -104,7 +104,7 @@
     activeKey: propTypes.oneOf(["pure", "gradient"]).def("pure"),
     lang: {
       type: String as PropType<Lang>,
-      default: "ZH-cn",
+      default: "En",
     },
     zIndex: propTypes.number.def(9999),
     pickerContainer: {
@@ -136,7 +136,7 @@
     ],
     setup(props, { emit }) {
       provide<ColorPickerProvider>(ColorPickerProviderKey, {
-        lang: computed(() => Local[props.lang || "ZH-cn"]),
+        lang: computed(() => Local[props.lang || "En"]),
       });
 
       const hasExtra = !!useSlots().extra;

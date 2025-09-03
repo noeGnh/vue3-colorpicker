@@ -1,14 +1,14 @@
 {
-  "name": "vue3-colorpicker",
-  "version": "2.3.0",
+  "name": "@arkn/vue3-colorpicker",
+  "version": "2.3.1",
   "main": "index.es.js",
   "types": "types/index.d.ts",
   "author": "aesoper",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aesoper101/vue3-colorpicker/issues"
+    "url": "https://github.com/noeGnh/vue3-colorpicker/issues"
   },
-  "homepage": "https://github.com/aesoper101/vue3-colorpicker#readme",
+  "homepage": "https://github.com/noeGnh/vue3-colorpicker#readme",
   "dependencies": {
     "@aesoper/normal-utils": "^0.1.5",
     "@popperjs/core": "^2.11.8",

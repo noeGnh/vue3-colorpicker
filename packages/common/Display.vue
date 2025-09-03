@@ -18,7 +18,11 @@
     <template v-else-if="state.rgba">
       <div style="display: flex; flex: 1; gap: 4px; height: 100%">
         <div class="vc-color-input" v-for="(v, i) in state.rgba" :key="i">
-          <input :value="v" @input="(e) => onInputChange(e, i)" @blur="(e) => onBlurChange(e, i)" />
+          <input
+            :value="v"
+            @input="(e: Event) => onInputChange(e, i)"
+            @blur="(e: Event) => onBlurChange(e, i)"
+          />
         </div>
       </div>
     </template>

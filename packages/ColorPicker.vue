@@ -20,7 +20,11 @@
       :class="{ round: shape === 'circle' }"
       ref="colorCubeRef"
     >
-      <div class="current-color" :style="getBgColorStyle" @click="onShowPicker"></div>
+      <div
+        class="current-color"
+        :style="props.pureColor ? getBgColorStyle : `background: ${props.defaultPureColor}`"
+        @click="onShowPicker"
+      ></div>
     </div>
 
     <teleport :to="pickerContainer">
@@ -80,6 +84,10 @@
     shape: propTypes.oneOf(["circle", "square"]).def("square"),
     pureColor: {
       type: [String, Object] as PropType<ColorInputWithoutInstance>,
+      default: "",
+    },
+    defaultPureColor: {
+      type: [String, Object] as PropType<ColorInputWithoutInstance>,
       default: "#000000",
     },
     gradientColor: propTypes.string.def(
@@ -96,7 +104,7 @@
     activeKey: propTypes.oneOf(["pure", "gradient"]).def("pure"),
     lang: {
       type: String as PropType<Lang>,
-      default: "ZH-cn",
+      default: "En",
     },
     zIndex: propTypes.number.def(9999),
     pickerContainer: {
@@ -128,13 +136,17 @@
     ],
     setup(props, { emit }) {
       provide<ColorPickerProvider>(ColorPickerProviderKey, {
-        lang: computed(() => Local[props.lang || "ZH-cn"]),
+        lang: computed(() => {
+          const local = Local[props.lang.toLowerCase() as Lang] || Local.en;
+
+          return local;
+        }),
       });
 
       const hasExtra = !!useSlots().extra;
 
       const state = reactive({
-        pureColor: props.pureColor || "",
+        pureColor: props.pureColor || props.defaultPureColor,
         activeKey: props.useType === "gradient" ? "gradient" : props.activeKey, //  "pure" | "gradient"
         isAdvanceMode: false,
       });
@@ -461,6 +473,7 @@
         onShowPicker,
         onActiveKeyChange,
         onAutoClose,
+        props,
       };
     },
   });
@@ -484,10 +497,10 @@
     }
 
     &.round {
-      width: 22px;
-      height: 22px;
+      width: 23px;
+      height: 23px;
       border-radius: 50%;
-      border: 1px solid #d8d8d8;
+      border: 0.5px solid #d8d8d8;
     }
 
     .current-color {

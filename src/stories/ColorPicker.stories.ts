@@ -14,6 +14,16 @@ export default {
       type: "string",
       description: "hex string or rgba string",
     },
+    defaultPureColor: {
+      type: "string",
+      description:
+        "default hex string or rgba string, used for picker background when color is empty or undefined",
+      table: {
+        defaultValue: {
+          summary: "#000000",
+        },
+      },
+    },
     gradientColor: {
       type: "string",
       table: {

@@ -136,7 +136,11 @@
     ],
     setup(props, { emit }) {
       provide<ColorPickerProvider>(ColorPickerProviderKey, {
-        lang: computed(() => Local[props.lang || "En"]),
+        lang: computed(() => {
+          const local = Local[props.lang.toLowerCase() as Lang] || Local.en;
+
+          return local;
+        }),
       });
 
       const hasExtra = !!useSlots().extra;

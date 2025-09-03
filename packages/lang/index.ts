@@ -2,10 +2,10 @@ import enUS from "./en-US";
 import zhCn from "./zh-CN";
 import frFR from "./fr-FR";
 
-export type Lang = "ZH-cn" | "En" | "Fr";
+export type Lang = "zh-cn" | "en" | "fr";
 
 export const Local: { [K in Lang]: { [key: string]: string } } = {
-  En: enUS,
-  Fr: frFR,
-  "ZH-cn": zhCn,
+  en: enUS,
+  fr: frFR,
+  "zh-cn": zhCn,
 };
